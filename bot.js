@@ -42,7 +42,7 @@ bot.onText(/\/start/, (msg) => {
       [
         {
           text: '🎮 Играть в Grower Simulator',
-          web_app: { url: webAppUrl || 'https://your-app.railway.app' }
+          web_app: { url: webAppUrl && webAppUrl.startsWith('http') ? webAppUrl : `https://${webAppUrl || 'your-app.railway.app'}` }
         }
       ],
       [
@@ -70,7 +70,7 @@ bot.onText(/\/play/, (msg) => {
       [
         {
           text: '🎮 Открыть игру',
-          web_app: { url: webAppUrl || 'https://your-app.railway.app' }
+          web_app: { url: webAppUrl && webAppUrl.startsWith('http') ? webAppUrl : `https://${webAppUrl || 'your-app.railway.app'}` }
         }
       ]
     ]
@@ -168,7 +168,7 @@ bot.on('callback_query', (query) => {
             [
               {
                 text: '🎮 Открыть игру',
-                web_app: { url: webAppUrl || 'https://your-app.railway.app' }
+                web_app: { url: webAppUrl && webAppUrl.startsWith('http') ? webAppUrl : `https://${webAppUrl || 'your-app.railway.app'}` }
               }
             ]
           ]
@@ -183,7 +183,7 @@ bot.on('callback_query', (query) => {
             [
               {
                 text: '🎮 Открыть игру',
-                web_app: { url: webAppUrl || 'https://your-app.railway.app' }
+                web_app: { url: webAppUrl && webAppUrl.startsWith('http') ? webAppUrl : `https://${webAppUrl || 'your-app.railway.app'}` }
               }
             ]
           ]
