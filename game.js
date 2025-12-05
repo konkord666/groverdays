@@ -165,8 +165,8 @@ function renderPlants() {
 }
 
 function getPlantIcon(stage) {
-  const icons = ['🌱', '🌿', '🪴', '🌳', '🌲', '🎄'];
-  return icons[stage] || '🌱';
+  // Используем GIF вместо эмодзи
+  return `<img src="mary.gif" alt="Plant" class="plant-gif" />`;
 }
 
 function getStageText(stage) {

@@ -226,6 +226,13 @@ input:focus {
   animation: grow 2s ease-in-out infinite;
 }
 
+.plant-gif {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  animation: grow 2s ease-in-out infinite;
+}
+
 @keyframes grow {
   0%, 100% { transform: scale(1); }
   50% { transform: scale(1.1); }
