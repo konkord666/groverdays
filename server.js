@@ -26,6 +26,11 @@ app.use(session({
 
 app.use(express.static('public'));
 
+// Главная страница
+app.get('/', (req, res) => {
+  res.sendFile(__dirname + '/public/index.html');
+});
+
 // Middleware для проверки авторизации
 const requireAuth = (req, res, next) => {
   if (!req.session.playerId) {
