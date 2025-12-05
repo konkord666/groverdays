@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🌱 Grower Simulator - Симулятор Гровера</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="auth-screen" class="screen active">
+    <div class="auth-container">
+      <h1 class="game-title">🌱 GROWER SIMULATOR</h1>
+      <div class="auth-tabs">
+        <button class="tab-btn active" data-tab="login">Вход</button>
+        <button class="tab-btn" data-tab="register">Регистрация</button>
+      </div>
+      
+      <div id="login-form" class="auth-form active">
+        <input type="text" id="login-username" placeholder="Имя пользователя" autocomplete="username">
+        <input type="password" id="login-password" placeholder="Пароль" autocomplete="current-password">
+        <button class="btn btn-primary" onclick="login()">Войти</button>
+      </div>
+      
+      <div id="register-form" class="auth-form">
+        <input type="text" id="register-username" placeholder="Имя пользователя (мин. 3 символа)" autocomplete="username">
+        <input type="password" id="register-password" placeholder="Пароль (мин. 6 символов)" autocomplete="new-password">
+        <button class="btn btn-primary" onclick="register()">Зарегистрироваться</button>
+      </div>
+      
+      <div id="auth-error" class="error-message"></div>
+    </div>
+  </div>
+
+  <div id="game-screen" class="screen">
+    <header class="game-header">
+      <div class="player-info">
+        <span class="player-name">👤 <span id="player-name"></span></span>
+        <span class="player-level">⭐ Уровень <span id="player-level"></span></span>
+      </div>
+      <div class="player-stats">
+        <span class="stat money">💰 <span id="player-money">0</span>$</span>
+        <span class="stat exp">✨ <span id="player-exp">0</span> XP</span>
+      </div>
+      <button class="btn btn-small" onclick="logout()">Выход</button>
+    </header>
+
+    <div class="game-container">
+      <div class="main-panel">
+        <div class="grow-room">
+          <h2>🏠 Гроубокс</h2>
+          <div id="plants-grid" class="plants-grid"></div>
+          <button class="btn btn-success" onclick="plantNew()">🌱 Посадить растение</button>
+        </div>
+      </div>
+
+      <div class="side-panel">
+        <div class="shop-panel">
+          <h3>🛒 Магазин оборудования</h3>
+          <div class="equipment-list">
+            <div class="equipment-item">
+              <div class="eq-info">
+                <span class="eq-icon">💡</span>
+                <div>
+                  <div class="eq-name">Лампа</div>
+                  <div class="eq-desc">+2 к росту</div>
+                  <div class="eq-level">Уровень: <span id="light-level">0</span></div>
+                </div>
+              </div>
+              <button class="btn btn-buy" onclick="buyEquipment('light')">100$</button>
+            </div>
+            
+            <div class="equipment-item">
+              <div class="eq-info">
+                <span class="eq-icon">🌀</span>
+                <div>
+                  <div class="eq-name">Вентиляция</div>
+                  <div class="eq-desc">+10% качество</div>
+                  <div class="eq-level">Уровень: <span id="ventilation-level">0</span></div>
+                </div>
+              </div>
+              <button class="btn btn-buy" onclick="buyEquipment('ventilation')">150$</button>
+            </div>
+            
+            <div class="equipment-item">
+              <div class="eq-info">
+                <span class="eq-icon">🧪</span>
+                <div>
+                  <div class="eq-name">Удобрения</div>
+                  <div class="eq-desc">+15% здоровье</div>
+                  <div class="eq-level">Уровень: <span id="fertilizer-level">0</span></div>
+                </div>
+              </div>
+              <button class="btn btn-buy" onclick="buyEquipment('fertilizer')">80$</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="leaderboard-panel">
+          <h3>🏆 Топ игроков</h3>
+          <div id="leaderboard" class="leaderboard-list"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="notification" class="notification"></div>
+
+  <script src="game.js"></script>
+</body>
+</html>
