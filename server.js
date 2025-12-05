@@ -24,12 +24,13 @@ app.use(session({
   cookie: { maxAge: 24 * 60 * 60 * 1000 }
 }));
 
-app.use(express.static('public'));
+// Статические файлы в корне проекта
+app.use(express.static(__dirname));
 
 // Главная страница
 app.get('/', (req, res) => {
   const path = require('path');
-  res.sendFile(path.join(__dirname, 'public', 'index.html'));
+  res.sendFile(path.join(__dirname, 'index.html'));
 });
 
 // Middleware для проверки авторизации
